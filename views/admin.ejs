@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Access — Members Only</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/png" href="/favicon.png?v=2">
+</head>
+
+<body class="admin-page">
+
+  <main class="admin-container">
+
+    <div class="admin-code">ADMIN</div>
+
+    <div class="admin-line"></div>
+
+    <p class="admin-label">RESTRICTED AREA</p>
+
+    <h1>Admin Access</h1>
+
+    <p class="admin-description">
+      Enter the administrator passcode to unlock administrative privileges.
+    </p>
+
+    <form action="/admin" method="POST">
+
+      <label for="adminPasscode">Administrator Passcode</label>
+
+      <input
+        type="password"
+        id="adminPasscode"
+        name="adminPasscode"
+        placeholder="Enter admin passcode"
+        required
+        autocomplete="off"
+      >
+
+      <button type="submit">Become Admin</button>
+
+    </form>
+
+    <a href="/">Back to Members Only</a>
+
+  </main>
+
+</body>
+</html>
+

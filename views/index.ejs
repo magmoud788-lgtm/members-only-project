@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members Only</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/png" href="/favicon.png?v=2">
+</head>
+
+<body>
+
+  <h1>Members Only</h1>
+
+  <% if (user) { %>
+
+    <p>Logged in as <%= user.username %></p>
+
+    <form action="/logout" method="POST">
+      <button type="submit">Log out</button>
+    </form>
+
+    <% if (!user.admin) { %>
+      <a href="/admin">Become Admin</a>
+    <% } %>
+
+    <% if (user.membership !== true) { %>
+      <a href="/join">Join the Club</a>
+    <% } %>
+
+  <% } else { %>
+
+    <a href="/login">Log in</a>
+    <a href="/sign-up">Sign up</a>
+
+  <% } %>
+
+  <a href="/new-message">Create a new message</a>
+
+  <h2>Messages</h2>
+
+  <% result.forEach(message => { %>
+
+    <article>
+
+      <h3>
+        <a href="/messages/<%= message.id %>">
+          <%= message.title %>
+        </a>
+      </h3>
+
+      <p><%= message.description %></p>
+
+      <% if (user && user.membership === true) { %>
+
+        <p>Author: <%= message.username %></p>
+        <p>Date: <%= message.created_at %></p>
+
+      <% } else { %>
+
+        <p>Author: Unknown</p>
+
+        <% if (user) { %>
+          <a href="/join">Join the Club To View Authors</a>
+        <% } else { %>
+          <a href="/login">Log in to View Authors</a>
+        <% } %>
+
+      <% } %>
+
+      <% if (user && user.admin === true) { %>
+
+        <form
+          action="/messages/<%= message.id %>/delete"
+          method="POST"
+        >
+          <button type="submit">Delete</button>
+        </form>
+
+      <% } %>
+
+    </article>
+
+  <% }) %>
+
+</body>
+</html>

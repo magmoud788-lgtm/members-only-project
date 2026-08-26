@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Club</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/png" href="/favicon.png?v=2">
+</head>
+
+<body>
+
+  <h1>Join the Club</h1>
+
+  <form action="/join" method="POST">
+
+    <label for="passcode">Secret Passcode</label>
+
+    <input
+      type="password"
+      id="passcode"
+      name="passcode"
+      placeholder="Enter the secret passcode"
+      required
+      autocomplete="off"
+    >
+
+    <button type="submit">Join the Club</button>
+
+  </form>
+
+  <a href="/">Back to Members Only</a>
+
+</body>
+</html>
