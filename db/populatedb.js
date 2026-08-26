@@ -1,4 +1,5 @@
 const { Client } = require('pg');
+require('dotenv').config();
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS users (
@@ -23,7 +24,7 @@ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 async function main() {
   console.log('seeding...')
   const client = new Client({
-  connectionString: "postgresql://mahmoud:ronaldomahmoud@localhost:5432/auth_project"
+  connectionString: process.env.DATABASE_URL
 });
 
   await client.connect();
